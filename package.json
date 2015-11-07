@@ -1,0 +1,20 @@
+{
+  "name": "dienes",
+  "version": "0.0.1",
+  "description": "",
+  "main": "none",
+  "scripts": {
+    "build": "mkdir -p dist && coffee --compile --output dist src && cp index.html dist/index.html",
+    "buildEte": "coffee --compile --output buildEte ete",
+    "nightwatch": "npm run buildEte && nightwatch",
+    "test": "npm run build && npm run nightwatch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bacon-dom": "^0.1.10"
+  },
+  "devDependencies": {
+    "nightwatch": "^0.8.6"
+  }
+}
