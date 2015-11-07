@@ -16,3 +16,6 @@ describe "decompose", ->
 
   it "handle hundreds", ->
     expect(decompose(514)).to.deep.eq(hundreds: 5, tens: 1, ones: 4)
+
+  it "can handle missing tens", ->
+    expect(decompose(504)).to.deep.eq(hundreds: 5, ones: 4)
