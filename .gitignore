@@ -4,3 +4,4 @@ buildEte
 dienes.iml
 node_modules
 dist
+npm-debug.log
