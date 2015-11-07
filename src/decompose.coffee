@@ -1,8 +1,13 @@
 _ = require('lodash')
 
-decompose = (n) ->
-  if(n == 0) then return {}
-  if (n >= 10) then return _.assign {tens: Math.floor(n / 10)}, decompose( n % 10 )
-  return ones: n
+recurse = (n, columns) ->
+  return {} unless n > 0
+  lastDigit = n % 10
+  thisColumnName = columns.pop()
+  thisColumn = {}
+  if(lastDigit > 0) then thisColumn[thisColumnName] = lastDigit
+  return _.assign thisColumn, recurse(Math.floor(n/10), columns)
+
+decompose = (n) -> recurse(n, ['tens', 'ones'])
 
 module.exports = decompose
