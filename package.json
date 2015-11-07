@@ -15,6 +15,7 @@
     "bacon-dom": "^0.1.10"
   },
   "devDependencies": {
-    "nightwatch": "^0.8.6"
+    "nightwatch": "^0.8.6",
+    "webpack": "^1.12.3"
   }
 }
