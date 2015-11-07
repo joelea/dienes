@@ -15,6 +15,7 @@
   "dependencies": {
     "bacon-dom": "^0.1.10",
     "baconjs": "^0.7.80",
+    "lodash": "^3.10.1",
     "virtual-dom": "^2.1.1"
   },
   "devDependencies": {
