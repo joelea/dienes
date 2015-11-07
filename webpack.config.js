@@ -5,7 +5,7 @@ module.exports = {
     app: "./src/app.coffee",
   },
   output: {
-    filename: path.join(__dirname, "build/[name].js"),
+    filename: path.join(__dirname, "dist/[name].js"),
   },
   resolve: {
     extensions: ['', '.coffee', '.webpack.js', '.web.js', '.js']
