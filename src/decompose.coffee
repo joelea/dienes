@@ -8,6 +8,6 @@ recurse = (n, columns) ->
   if(lastDigit > 0) then thisColumn[thisColumnName] = lastDigit
   return _.assign thisColumn, recurse(Math.floor(n/10), columns)
 
-decompose = (n) -> recurse(n, ['tens', 'ones'])
+decompose = (n) -> recurse(n, ['hundreds', 'tens', 'ones'])
 
 module.exports = decompose
