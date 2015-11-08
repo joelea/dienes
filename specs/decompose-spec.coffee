@@ -22,3 +22,6 @@ describe "decompose", ->
 
   it "should not decompose non-numerical values", ->
     expect(decompose('abc')).to.deep.eq(error: true)
+
+  it "should not decompose numbers with more than 4 digits", ->
+    expect(decompose('12345')).to.deep.eq(error: true)

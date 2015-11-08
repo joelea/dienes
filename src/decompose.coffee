@@ -12,6 +12,7 @@ recurse = (n, columns) ->
 
 decompose = (rawNumber) ->
   return ERROR unless rawNumber.match /^\d+$/
+  return ERROR if rawNumber.length >4
   number = Number.parseInt(rawNumber)
   return recurse(number, ['hundreds', 'tens', 'ones'])
 
