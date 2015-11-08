@@ -1,12 +1,16 @@
-module.exports =
-  'add a decomposition' : (browser) ->
-    browser
-      .url('http://dienes')
-      .waitForElementVisible('.ete-set-number')
-      .setValue('.ete-set-number', '321')
+assertNumberOfElements = (browser, selector, count) ->
+  browser.elements 'css selector', selector, (result) ->
+    browser.assert.equal(result.value.length, count);
 
-    browser.expect.element('.hundreds').to.be.visible
-    browser.expect.element('.tens').to.be.visible
-    browser.expect.element('.ones').to.be.visible
+module.exports =
+'add a decomposition' : (browser) ->
+    browser
+    .url('http://dienes')
+    .waitForElementVisible('.ete-set-number')
+    .setValue('.ete-set-number', '321')
+
+    assertNumberOfElements(browser, '.hundreds', 3)
+    assertNumberOfElements(browser, '.tens', 2)
+    assertNumberOfElements(browser, '.ones', 1)
 
     browser.end()
