@@ -1,5 +1,7 @@
 _ = require('lodash')
 
+ERROR = {error: true}
+
 recurse = (n, columns) ->
   return {} if n is 0 or columns.length is 0
   lastDigit = n % 10
@@ -8,6 +10,9 @@ recurse = (n, columns) ->
   if(lastDigit > 0) then thisColumn[thisColumnName] = lastDigit
   return _.assign thisColumn, recurse(Math.floor(n/10), columns)
 
-decompose = (n) -> recurse(n, ['hundreds', 'tens', 'ones'])
+decompose = (rawNumber) ->
+  return ERROR unless rawNumber.match /^\d+$/
+  number = Number.parseInt(rawNumber)
+  return recurse(number, ['hundreds', 'tens', 'ones'])
 
 module.exports = decompose
