@@ -5,9 +5,11 @@ assertNumberOfElements = (browser, selector, count) ->
 module.exports =
   'add a decomposition' : (browser) ->
     browser
-    .url('http://dienes')
-    .waitForElementVisible('.ete-set-number')
-    .setValue('.ete-set-number', '321')
+      .url('http://dienes')
+      .waitForElementVisible('.ete-set-number')
+      .setValue('.ete-set-number', '321')
+      .pause(100000)
+      .waitForElementVisible('.hundreds')
 
     assertNumberOfElements(browser, '.hundreds', 3)
     assertNumberOfElements(browser, '.tens', 2)
