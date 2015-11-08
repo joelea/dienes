@@ -1,0 +1,28 @@
+{
+  "name": "dienes",
+  "version": "0.0.1",
+  "description": "",
+  "main": "none",
+  "scripts": {
+    "build": "mkdir -p dist && webpack && cp index.html dist/index.html",
+    "buildEte": "coffee --compile --output buildEte ete",
+    "nightwatch": "docker-compose up -d && npm run buildEte && nightwatch",
+    "mocha": "mocha --recursive --compilers coffee:coffee-script/register specs",
+    "test": "npm run build && npm run mocha && npm run nightwatch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bacon-dom": "^0.1.10",
+    "baconjs": "^0.7.80",
+    "lodash": "^3.10.1",
+    "virtual-dom": "^2.1.1"
+  },
+  "devDependencies": {
+    "chai": "^3.4.0",
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.10.0",
+    "nightwatch": "^0.8.6",
+    "webpack": "^1.12.3"
+  }
+}

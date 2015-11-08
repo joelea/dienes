@@ -1,0 +1,13 @@
+selenium:
+  image: selenium/standalone-chrome-debug
+  ports:
+    - "4444:4444"
+    - "5900:5900"
+  links:
+    - dienes
+  volumes:
+    - ./screenshots:/screenshots
+dienes:
+  image: smebberson/alpine-nginx
+  volumes:
+    - ./dist:/usr/html
