@@ -7,8 +7,8 @@ module.exports =
     browser
       .url('http://dienes')
       .waitForElementVisible('.ete-set-number')
+      .pause(100)
       .setValue('.ete-set-number', '321')
-      .pause(100000)
       .waitForElementVisible('.hundreds')
 
     assertNumberOfElements(browser, '.hundreds', 3)
@@ -21,8 +21,10 @@ module.exports =
     browser
       .url('http://dienes')
       .waitForElementVisible('.ete-set-number')
+      .pause(100)
       .setValue('.ete-set-number', '78654')
 
-    browser.expect.element('.error').to.be.visible
+    browser.expect.element('.error').text
+      .to.contain('Sorry, we can only deal with up to 4-digit numbers')
 
     browser.end()
