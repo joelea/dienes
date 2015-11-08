@@ -2,6 +2,14 @@ _ = require('lodash')
 
 ERROR = {error: true}
 
+validityChecks = [
+  (raw) -> not raw.match /^\d+$/
+  (raw) -> raw.length > 4
+]
+
+inputIsInvalid = (rawNumber) ->
+  _.any(validityChecks, (check) -> check(rawNumber))
+
 recurse = (n, columns) ->
   return {} if n is 0 or columns.length is 0
   lastDigit = n % 10
@@ -11,8 +19,7 @@ recurse = (n, columns) ->
   return _.assign thisColumn, recurse(Math.floor(n/10), columns)
 
 decompose = (rawNumber) ->
-  return ERROR unless rawNumber.match /^\d+$/
-  return ERROR if rawNumber.length >4
+  return ERROR if inputIsInvalid(rawNumber)
   number = Number.parseInt(rawNumber)
   return recurse(number, ['hundreds', 'tens', 'ones'])
 
