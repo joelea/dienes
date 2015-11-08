@@ -9,10 +9,10 @@ number = Bacon.fromEvent(
   setNumberInput,
   'input',
   (event) -> event.target.value
-)
+).startWith(setNumberInput.value)
 
 decomposition = number.map(decompose)
 
-appDom = decomposition.map(render)#.log("dom")
+appDom = decomposition.map(render)
 
 attach(appDom).to(document.getElementById('app'))
