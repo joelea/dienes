@@ -9,10 +9,12 @@ module.exports = {
   },
   resolve: {
     extensions: ['', '.coffee', '.webpack.js', '.web.js', '.js']
+
   },
   module: {
     loaders: [
       { test: /\.coffee$/, loader: "coffee-loader" },
+      { test: /\.less$/, loader: "style!css!less" }
     ],
   },
 };

@@ -1,0 +1,30 @@
+.columns {
+  display: flex;
+  .column {
+    width: 25%;
+    overflow: auto;
+    display: flex;
+    flex-flow: column;
+
+    .column-header {
+      margin: 10px;
+    }
+    .column-body {
+      height: 500px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .diene {
+        background-color: cadetblue;
+        border: 1px solid white;
+        margin: 10px;
+        border-collapse: collapse;
+        td {
+          width: 8px;
+          height: 8px;
+          padding: 0px;
+        }
+      }
+    }
+  }
+}

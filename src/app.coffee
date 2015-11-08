@@ -10,12 +10,12 @@ number = Bacon.fromEvent(
   setNumberInput,
   'input',
   (event) -> event.target.value
-)
+).startWith(setNumberInput.value)
 
 decomposition = number.map(decompose)
-errorStatus = decomposition.map('.errors').log()
+errorStatus = decomposition.map('.errors')
 
-appDom = decomposition.map(render)
+appDom = decomposition.map(render).log();
 errorDom = errorStatus.map(renderErrors)
 
 dom = appDom.combine errorDom, (app, error) ->
