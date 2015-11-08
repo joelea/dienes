@@ -12,7 +12,7 @@ number = Bacon.fromEvent(
   (event) -> event.target.value
 )
 
-decomposition = number.map(decompose).startWith({})
+decomposition = number.map(decompose)
 decomposition.onValue (decomp) ->
   updateColumn = (column) ->
     document.getElementById("#{column}-input")?.value = (decomp[column] ? 0)
@@ -21,8 +21,8 @@ decomposition.onValue (decomp) ->
 
 errorStatus = decomposition.map('.errors')
 
-appDom = decomposition.map(render)
-errorDom = errorStatus.map(renderErrors)
+appDom = decomposition.map(render).startWith(render({}))
+errorDom = errorStatus.map(renderErrors).startWith(renderErrors([]))
 
 dom = appDom.combine errorDom, (app, error) ->
   h '.content', [
