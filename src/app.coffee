@@ -13,15 +13,21 @@ number = Bacon.fromEvent(
 )
 
 decomposition = number.map(decompose)
-errorStatus = decomposition.map('.errors').log()
+decomposition.onValue (decomp) ->
+  updateColumn = (column) ->
+    document.getElementById("#{column}-input")?.value = (decomp[column] ? 0)
 
-appDom = decomposition.map(render)
-errorDom = errorStatus.map(renderErrors)
+  ['hundreds', 'tens', 'ones'].map(updateColumn)
+
+errorStatus = decomposition.map('.errors')
+
+appDom = decomposition.map(render).startWith(render({}))
+errorDom = errorStatus.map(renderErrors).startWith(renderErrors([]))
 
 dom = appDom.combine errorDom, (app, error) ->
   h '.content', [
     error
-    app,
+    app
   ]
 
 attach(dom).to(document.getElementById('app'))
