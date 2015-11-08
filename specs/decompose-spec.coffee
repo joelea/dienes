@@ -29,3 +29,6 @@ describe "decompose", ->
     expect(decompose('1234')).to.deep.eq(
       errors: ['Sorry, we can only deal with up to 4-digit numbers']
     )
+
+  it "should not error on the empty string", ->
+    expect(decompose('')).to.deep.eq({})

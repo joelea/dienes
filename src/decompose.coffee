@@ -1,7 +1,7 @@
 _ = require('lodash')
 
 validityChecks = [
-  (raw) -> if not raw.match /^\d+$/ then return "Sorry, #{raw} is not a number"
+  (raw) -> if raw.match /[^\d]/ then return "Sorry, #{raw} is not a number"
   (raw) -> if raw.length > 3 then return 'Sorry, we can only deal with up to 4-digit numbers'
 ]
 
