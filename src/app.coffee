@@ -11,11 +11,7 @@ number = Bacon.fromEvent(
   (event) -> event.target.value
 )
 
-isNotError = (decomposition) -> not decomposition.error?
-
-decomposition = number
-  .map(decompose)
-  .map((decomp) -> if decomp.errors? then {} else decomp)
+decomposition = number.map(decompose)
 
 appDom = decomposition.map(render)#.log("dom")
 

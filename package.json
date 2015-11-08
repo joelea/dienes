@@ -4,7 +4,8 @@
   "description": "",
   "main": "none",
   "scripts": {
-    "build": "mkdir -p dist && webpack && cp index.html dist/index.html",
+    "build": "mkdir -p dist && cp index.html dist/index.html && webpack ",
+    "build:watch": "npm run build -- --watch",
     "buildEte": "coffee --compile --output buildEte ete",
     "nightwatch": "docker-compose up -d && npm run buildEte && nightwatch",
     "mocha": "mocha --recursive --compilers coffee:coffee-script/register specs",

@@ -1,10 +1,13 @@
 h = require('virtual-dom').h
 renderColumn = require('./render-column')
 
-renderInvalidDecomposition = (initialValue) ->
-  h '.error', "Sorry, we cannot decompose #{initialValue}"
+renderErrors = ({errors}) ->
+  errors ?= []
+  errorElements = errors.map((error) -> h('li.error', error))
+  h '.errors', "Sorry, we could not decompose that value",
+    h 'ul', errorElements
 
-renderValidDecomposition = (decomposition) ->
+renderDecomposition = (decomposition) ->
   h 'table',
     h 'tr', [
       renderColumn 'hundreds', decomposition.hundreds ? 0
@@ -12,10 +15,7 @@ renderValidDecomposition = (decomposition) ->
       renderColumn 'ones', decomposition.ones ? 0
     ]
 
-render = ([decomposition, initialValue]) ->
-  return if decomposition.error
-    renderInvalidDecomposition(initialValue)
-  else
-    renderValidDecomposition(decomposition)
-
-module.exports = renderValidDecomposition
+module.exports = (decomposition) ->
+  h '.content', [
+    renderDecomposition(decomposition)
+  ]
