@@ -6,7 +6,7 @@
   "scripts": {
     "build": "mkdir -p dist && webpack && cp index.html dist/index.html",
     "buildEte": "coffee --compile --output buildEte ete",
-    "nightwatch": "npm run buildEte && nightwatch",
+    "nightwatch": "docker-compose up -d && npm run buildEte && nightwatch",
     "mocha": "mocha --recursive --compilers coffee:coffee-script/register specs",
     "test": "npm run build && npm run mocha && npm run nightwatch"
   },

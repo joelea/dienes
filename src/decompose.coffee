@@ -1,7 +1,7 @@
 _ = require('lodash')
 
 recurse = (n, columns) ->
-  return {} unless n > 0
+  return {} if n is 0 or columns.length is 0
   lastDigit = n % 10
   thisColumnName = columns.pop()
   thisColumn = {}
