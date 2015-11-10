@@ -7,7 +7,7 @@
     "build": "mkdir -p dist && cp index.html dist/index.html && webpack ",
     "build:watch": "npm run build -- --watch",
     "mocha": "mocha --recursive --compilers coffee:coffee-script/register specs",
-    "ete": "docker-compose build && docker-compose up ete && docker-compose kill && docker-compose rm -f",
+    "ete": "docker-compose build && docker-compose run --rm ete",
     "test": "npm run build && npm run mocha && npm run ete"
   },
   "author": "",
