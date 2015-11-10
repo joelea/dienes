@@ -9,11 +9,11 @@ module.exports =
       .waitForElementVisible('.ete-set-number')
       .pause(100)
       .setValue('.ete-set-number', '321')
-      .waitForElementVisible('.hundreds')
+      .waitForElementVisible('.hundred')
 
-    assertNumberOfElements(browser, '.hundreds', 3)
-    assertNumberOfElements(browser, '.tens', 2)
-    assertNumberOfElements(browser, '.ones', 1)
+    assertNumberOfElements(browser, '.hundred', 3)
+    assertNumberOfElements(browser, '.ten', 2)
+    assertNumberOfElements(browser, '.one', 1)
 
     browser.end()
 

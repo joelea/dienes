@@ -5,9 +5,16 @@ selenium:
     - "5900:5900"
   links:
     - dienes
-  volumes:
-    - ./screenshots:/screenshots
+
 dienes:
   image: smebberson/alpine-nginx
   volumes:
     - ./dist:/usr/html
+
+ete:
+  build: ./ete
+  volumes:
+    - ./screenshots:/screenshots
+  links:
+    - selenium
+  command: npm run nightwatch
