@@ -1,1 +1,1 @@
-module.exports = -> 0
+module.exports = ({ones}) -> return ones ? 0
