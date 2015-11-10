@@ -7,3 +7,6 @@ describe "recompose", ->
 
   it "recompose a ones column to the value of the column", ->
     expect(recompose({ones: 3})).to.eq(3)
+
+  it "recompose a tens column to the ten times the value of the column", ->
+    expect(recompose({tens: 4})).to.eq(40)
