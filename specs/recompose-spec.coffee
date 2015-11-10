@@ -10,3 +10,6 @@ describe "recompose", ->
 
   it "recompose a tens column to the ten times the value of the column", ->
     expect(recompose({tens: 4})).to.eq(40)
+
+  it "recompose a hundreds column to the one hundred times the value of the column", ->
+    expect(recompose({hundreds: 5})).to.eq(500)
