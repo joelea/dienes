@@ -13,3 +13,6 @@ describe "recompose", ->
 
   it "recompose a hundreds column to the one hundred times the value of the column", ->
     expect(recompose({hundreds: 5})).to.eq(500)
+
+  it "recompose a decomposition of multiple columns into the sum of the seperate columns", ->
+    expect(recompose({hundreds: 5, tens: 4, ones: 3})).to.eq(543)
