@@ -13,11 +13,7 @@ number = Bacon.fromEvent(
 )
 
 decomposition = number.map(decompose)
-decomposition.onValue (decomp) ->
-  updateColumn = (column) ->
-    document.getElementById("#{column}-input")?.value = (decomp[column] ? 0)
-
-  ['hundreds', 'tens', 'ones'].map(updateColumn)
+decomposition.onValue (decomp) -> setNumberInput.value = recompose(decomp)
 
 errorStatus = decomposition.map('.errors')
 
