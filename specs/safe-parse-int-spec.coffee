@@ -10,3 +10,6 @@ describe "safeParseInt should", ->
 
   it 'parses empty string to 0', ->
     expect(safeParseInt("")).to.eq(0)
+
+  it 'parses string numbers as numbers', ->
+    expect(safeParseInt("3")).to.eq(3)
