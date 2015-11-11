@@ -1,0 +1,1 @@
+module.exports = (rawNumber) -> rawNumber ? 0
