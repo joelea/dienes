@@ -7,3 +7,6 @@ describe "safeParseInt should", ->
 
   it 'parses undefined to 0', ->
     expect(safeParseInt(undefined)).to.eq(0)
+
+  it 'parses empty string to 0', ->
+    expect(safeParseInt("")).to.eq(0)
