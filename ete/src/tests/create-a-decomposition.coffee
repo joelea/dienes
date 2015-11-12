@@ -17,14 +17,20 @@ module.exports =
 
     browser.end()
 
-  'displays a sensible error message when the input is not valid' : (browser) ->
+  'edit a decomposition at the column level' : (browser) ->
     browser
       .url('http://dienes')
       .waitForElementVisible('.ete-set-number')
       .pause(100)
-      .setValue('.ete-set-number', '78654')
+      .setValue('.ete-set-number', '321')
+      .clearValue('#hundreds-input')
+      .setValue('#hundreds-input', '5')
 
-    browser.expect.element('.error').text
-      .to.contain('Sorry, we can only deal with up to 4-digit numbers')
+    browser.expect.element('.ete-set-number').value.to.equal('521')
+
+    assertNumberOfElements(browser, '.hundred', 5)
+    assertNumberOfElements(browser, '.ten', 2)
+    assertNumberOfElements(browser, '.one', 1)
 
     browser.end()
+

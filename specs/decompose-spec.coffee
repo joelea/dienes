@@ -32,3 +32,6 @@ describe "decompose", ->
 
   it "should not error on the empty string", ->
     expect(decompose('')).to.deep.eq({})
+
+  it "should not error on a number it can decompose", ->
+    expect(decompose(3)).to.deep.eq({ones: 3})

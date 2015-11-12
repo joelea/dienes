@@ -16,7 +16,8 @@ recurse = (n, columns) ->
   if(lastDigit > 0) then thisColumn[thisColumnName] = lastDigit
   return _.assign thisColumn, recurse(Math.floor(n/10), columns)
 
-decompose = (rawNumber) ->
+decompose = (inputNumber) ->
+  rawNumber = String(inputNumber)
   errors = inputErrors(rawNumber).filter((error) -> error?)
   if not _(errors).isEmpty() then return {errors}
   number = Number.parseInt(rawNumber)
