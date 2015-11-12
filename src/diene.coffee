@@ -1,6 +1,7 @@
 h = require('virtual-dom').h
+_ = require('lodash')
 
-row = (n) -> [0...n].map -> h 'td'
+row = (n) -> _.range(n).map -> h 'td'
 
 module.exports =
   one: ->
@@ -12,5 +13,5 @@ module.exports =
       h 'tr', row(10)
 
   hundred: ->
-    h 'table.hundred.diene', [0...10].map ->
+    h 'table.hundred.diene', _.range(10).map ->
       h 'tr', row(10)
