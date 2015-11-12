@@ -9,3 +9,19 @@ describe "diene should", ->
         h 'tr',
           h 'td'
     )
+
+  it "render a ten correctly", ->
+    expect(diene.ten()).to.deep.eq(
+      h 'table.ten.diene',
+        h 'tr',
+          h 'td'
+          h 'td'
+          h 'td'
+          h 'td'
+          h 'td'
+          h 'td'
+          h 'td'
+          h 'td'
+          h 'td'
+          h 'td'
+    )
