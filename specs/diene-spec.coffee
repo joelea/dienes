@@ -12,9 +12,7 @@ describe "diene should", ->
 
   it "render a ten correctly", ->
     expect(diene.ten()).to.deep.eq(
-      h 'table.ten.diene',
-        h 'tr', _.range(10).map ->
-          h 'td'
+      h 'table.ten.diene', _.range(10).map( -> h 'tr', h 'td')
     )
 
   it "render a hundred correctly", ->
