@@ -10,3 +10,7 @@ module.exports =
   ten: ->
     h 'table.ten.diene',
       h 'tr', row(10)
+
+  hundred: ->
+    h 'table.hundred.diene', [0...10].map ->
+      h 'tr', row(10)

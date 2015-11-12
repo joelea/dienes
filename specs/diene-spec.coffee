@@ -17,3 +17,10 @@ describe "diene should", ->
         h 'tr', [1..10].map ->
           h 'td'
     )
+
+  it "render a hundred correctly", ->
+    expect(diene.hundred()).to.deep.eq(
+      h 'table.hundred.diene', [1..10].map ->
+        h 'tr', [1..10].map ->
+          h 'td'
+    )
