@@ -4,11 +4,13 @@ h = require('virtual-dom').h
 createElement = require('virtual-dom').create
 decompose = require('./decompose')
 recompose = require('./recompose')
-render = require('./render')
+renderAs = require('./renderAs')
+initialDom = require('./initial-dom')
 renderErrors = require('./render-errors')
 safeParseInt = require('./safe-parse-int')
+diene = require('./diene')
 
-document.getElementById('app').appendChild(createElement(render({})))
+document.getElementById('app').appendChild(createElement(initialDom()))
 setNumberInput = document.getElementById('set-number')
 
 inputsTo = (input) ->
@@ -48,14 +50,16 @@ decomposition.onValue (decomp) ->
   hundredsInput.value = decomp.hundreds ? 0
 
 errorStatus = decomposition.map('.errors')
+ones = decomposition.map('.ones')
+tens = decomposition.map('.tens')
+hundreds = decomposition.map('.hundreds')
 
-appDom = decomposition.map(render).startWith(render({}))
-errorDom = errorStatus.map(renderErrors).startWith(renderErrors([]))
+errorsDom = errorStatus.map(renderErrors)
+onesDom = ones.map(renderAs(diene.one(), '.ones'))
+tensDom = tens.map(renderAs(diene.ten(), '.tens'))
+hundredsDom = hundreds.map(renderAs(diene.hundred(), '.hundreds'))
 
-dom = appDom.combine errorDom, (app, error) ->
-  h '.content', [
-    error
-    app
-  ]
-
-#attach(dom).to(document.getElementById('app'))
+attach(errorsDom).to(document.getElementById('errors'))
+attach(onesDom).to(document.getElementById('ones-anchor'))
+attach(tensDom).to(document.getElementById('tens-anchor'))
+attach(hundredsDom).to(document.getElementById('hundreds-anchor'))
