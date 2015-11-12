@@ -4,12 +4,11 @@ _ = require('lodash')
 rowContents = (n) -> _.range(n).map -> h 'td'
 rows = (n, contents) -> _.range(n).map -> h 'tr', contents
 
+diene = (name, x, y) ->
+  h "table.#{name}.diene", rows(x, rowContents(y))
 module.exports =
-  one: ->
-    h 'table.one.diene', rows(1, rowContents(1))
+  one: -> diene('one', 1, 1)
 
-  ten: ->
-    h 'table.ten.diene', rows(10, rowContents(1))
+  ten: -> diene('ten', 10, 1)
 
-  hundred: ->
-    h 'table.hundred.diene', rows(10, rowContents(10))
+  hundred: -> diene('hundred', 10, 10)
