@@ -18,7 +18,6 @@ recurse = (n, columns) ->
 
 decompose = (inputNumber) ->
   rawNumber = String(inputNumber)
-  console.log(rawNumber)
   errors = inputErrors(rawNumber).filter((error) -> error?)
   if not _(errors).isEmpty() then return {errors}
   number = Number.parseInt(rawNumber)
