@@ -1,7 +1,7 @@
-.set-number-container {
+.page-header {
   text-align: center;
   width: 100%;
-  height: 40px;
+  height: 5vh;
 
   #set-number {
     font-size: 20px;
@@ -14,8 +14,8 @@
 
 .columns {
   display: flex;
-  height: 100%;
   .column {
+    height: 100%;
     width: 33%;
     overflow: auto;
     display: flex;
@@ -23,28 +23,35 @@
     border-collapse: collapse;
 
     .column-header {
-      padding: 10px;
       border: 1px solid black;
       border-collapse: collapse;
       text-align: center;
+      height: 10vh;
+
+      * {
+        margin: 10px;
+      }
     }
     .column-body {
-      height: 500px;
-      display: flex;
-      flex-wrap: wrap;
+      height: 80vh;
       border: 1px solid black;
       border-bottom: none;
       border-collapse: collapse;
 
-      .diene {
-        background-color: cadetblue;
-        border: 1px solid white;
-        margin: 10px;
-        border-collapse: collapse;
-        td {
-          width: 8px;
-          height: 8px;
-          padding: 0px;
+      & > * {
+        display: flex;
+        flex-wrap: wrap;
+
+        .diene {
+          background-color: cadetblue;
+          border: 1px solid white;
+          margin: 10px;
+          border-collapse: collapse;
+          td {
+            width: 8px;
+            height: 8px;
+            padding: 0px;
+          }
         }
       }
     }
