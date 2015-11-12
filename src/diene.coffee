@@ -1,23 +1,12 @@
 h = require('virtual-dom').h
 
+row = (n) -> [0...n].map -> h 'td'
+
 module.exports =
   one: ->
     h 'table.one.diene',
-      h 'tr', [
-        h 'td'
-      ]
+      h 'tr', row(1)
 
   ten: ->
     h 'table.ten.diene',
-      h 'tr', [
-        h 'td'
-        h 'td'
-        h 'td'
-        h 'td'
-        h 'td'
-        h 'td'
-        h 'td'
-        h 'td'
-        h 'td'
-        h 'td'
-      ]
+      h 'tr', row(10)
