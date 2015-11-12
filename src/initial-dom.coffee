@@ -19,8 +19,10 @@ column = (columnName) ->
   ]
 
 module.exports = ->
-  h '.columns', [
-    column 'hundreds'
-    column 'tens'
-    column 'ones'
+  h '.contents', [
+    h '.columns', [
+      column 'hundreds'
+      column 'tens'
+      column 'ones'
+    ]
   ]

@@ -6,7 +6,6 @@ decompose = require('./decompose')
 recompose = require('./recompose')
 renderAs = require('./renderAs')
 initialDom = require('./initial-dom')
-renderErrors = require('./render-errors')
 safeParseInt = require('./safe-parse-int')
 diene = require('./diene')
 
@@ -49,17 +48,14 @@ decomposition.onValue (decomp) ->
   tensInput.value = decomp.tens ? 0
   hundredsInput.value = decomp.hundreds ? 0
 
-errorStatus = decomposition.map('.errors')
 ones = decomposition.map('.ones')
 tens = decomposition.map('.tens')
 hundreds = decomposition.map('.hundreds')
 
-errorsDom = errorStatus.map(renderErrors)
 onesDom = ones.map(renderAs(diene.one(), '.ones'))
 tensDom = tens.map(renderAs(diene.ten(), '.tens'))
 hundredsDom = hundreds.map(renderAs(diene.hundred(), '.hundreds'))
 
-attach(errorsDom).to(document.getElementById('errors'))
 attach(onesDom).to(document.getElementById('ones-anchor'))
 attach(tensDom).to(document.getElementById('tens-anchor'))
 attach(hundredsDom).to(document.getElementById('hundreds-anchor'))
