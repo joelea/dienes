@@ -8,7 +8,8 @@
     "build:watch": "npm run build -- --watch",
     "mocha": "mocha --recursive --compilers coffee:coffee-script/register specs",
     "ete": "docker-compose build && docker-compose run --rm ete",
-    "test": "npm run build && npm run mocha && npm run ete"
+    "test": "npm run build && npm run mocha && npm run ete",
+    "deploy": "rm -rf dist && npm run build && ./scripts/deploy-to-gh-pages.sh"
   },
   "author": "",
   "license": "ISC",
