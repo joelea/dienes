@@ -1,6 +1,5 @@
 require('./styles/app.less')
 h = require('virtual-dom').h
-renderColumn = require('./render-column')
 
 header = (columnName) ->
   h ".column-header", [
@@ -9,8 +8,7 @@ header = (columnName) ->
   ]
 
 body = (columnName) ->
-  h '.column-body',
-    h '#' + columnName + '-anchor'
+  h '.column-body#' + columnName + '-anchor'
 
 column = (columnName) ->
   h ".column.column-#{columnName}", [
