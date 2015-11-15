@@ -2,6 +2,20 @@
 
 set -ex
 
+if [ "$TRAVIS_PULL_REQUEST" = "false" ]
+then
+   echo "Pull request PR, not deploying"
+   exit 0
+fi
+
+if [ "$TRAVIS_BRANCH" != "master" ]
+then
+   echo "Not on master branch, not deploying"
+   exit 0
+fi
+
+echo "==> Building and deploying app <=="
+
 # go to the out directory and create a *new* Git repo
 cd dist
 git init
@@ -20,3 +34,5 @@ git commit -m "Deploy to GitHub Pages"
 # will be lost, since we are overwriting it.) We redirect any output to
 # /dev/null to hide any sensitive credential data that might otherwise be exposed.
 git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:gh-pages > /dev/null 2>&1
+
+echo "==> Deployment completed successfully <=="
