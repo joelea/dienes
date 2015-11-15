@@ -2,7 +2,7 @@
 
 set -ex
 
-if [ "$TRAVIS_PULL_REQUEST" = "false" ]
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]
 then
    echo "Pull request PR, not deploying"
    exit 0
