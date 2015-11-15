@@ -1,10 +1,16 @@
 sudo: required
 services:
   - docker
-
 language: node_js
 node_js:
   - '4.1'
+env:
+  global:
+    - GH_REF: github.com/joelea/dienes.git
+    - secure: VZQBRHdKv/gFfMPgLgmmF5jZx46wt+vyrkIvkatwTMLuE8ZvEomg2HV+R1P1pbn6g6QZDVY2ma/eGcTHzas+kXAxqhkrs/uqpM1J4ZHZ/qJN6Ii+9xqmWrDKRQ00rMlzqKeaDu0QbXXtRj1Q8cTYZ+oJE14cteSMt5ZnAfizkhiiNYzLNUZWGF3Me22lHTvg/3spJKJdU0kdp8Gy46dW/DqSqqBH+mHQvDh8BY5eB0L+lxLJ8IG5IYMB8lDacJSipf90jGpHGdXimC91LeVV6aM1G1snFK3XbH6bL2ku6Msniw/XDE2q14rvh5tHxPgOBhdbShYMRXl46hvxvTLbdxJfB6ht0wqyOZZAh3Z1PTTNAsXBuruvZVTsPrhQV+UKJG/77TZVQZukoLjrASqSkiA3Q58ktxzeuTiJQqEhJItWisJEijFyJUc6rEcI6n3oqoeQRVcJ3Bnl9hbXLtPD97p0oU7St5hfotOr0UHP8IJH5YU5wums5hWRZ7x2zs/AyXexercvS3qQdgrgnFMGT8RWjd+MDYn4tOT2ptuRLMY374ZHR8QYwJxsUdpwWlo0Zmm1WlF/dqCPpeFAOdLrwmJ4Dx8iEgo7QUf9osahRT6fF4qG3cXiSqZiu7cgXgZbJxn2KHirWoBXA+u9sJdlJS1zg/uIBsUNHgaEZYJk/20=
 
 script:
   - npm test
+
+after_success:
+  - npm run deploy
